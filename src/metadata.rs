@@ -2,7 +2,7 @@ use near_sdk::near;
 use near_sdk::json_types::Base64VecU8;
 
 #[near(serializers = [borsh, json])]
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Debug)]
 pub struct FungibleTokenMetadata {
     pub spec: String,
     pub name: String,

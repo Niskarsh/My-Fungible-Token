@@ -1,16 +1,17 @@
-use std::ops::Deref;
-
-use metadata::FungibleTokenMetadataProvider;
-use near_sdk::{json_types::U128, near, AccountId};
-// use near_sdk::collections::LazyOption;
 
 pub mod ft_core;
 pub mod metadata;
 pub mod storage;
 
-use crate::metadata::{FungibleTokenMetadata, FT_METADATA_SPEC};
+// pub mod my_ft {
 
+
+pub use metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC};
+// pub(in self::test_default_metadata_for_ft_contract) use crate::metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC};
+
+use near_sdk::{json_types::U128, near, AccountId, PanicOnDefault};
 #[near(contract_state)]
+#[derive(Debug, PanicOnDefault)]
 pub struct Contract {
     // owner_id: AccountId,
     // total_supply: U128,
@@ -44,8 +45,10 @@ impl Contract {
     }
 }
 
+#[near]
 impl FungibleTokenMetadataProvider for Contract {
     fn ft_metadata(&self) -> FungibleTokenMetadata {
         self.metadata.as_ref().unwrap().clone()
     }
 }
+// }
