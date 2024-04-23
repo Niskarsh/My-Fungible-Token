@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 near-sdk = "5.1.0"
+near-primitives = "0.21.2"
 
 [dev-dependencies]
 near-workspaces = { version = "0.10.0", features = ["unstable"] }
