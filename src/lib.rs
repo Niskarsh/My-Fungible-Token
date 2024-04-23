@@ -1,3 +1,6 @@
+use std::ops::Deref;
+
+use metadata::FungibleTokenMetadataProvider;
 use near_sdk::{json_types::U128, near, AccountId};
 // use near_sdk::collections::LazyOption;
 
@@ -38,5 +41,11 @@ impl Contract {
                 reference_hash: None,
             },
         )
+    }
+}
+
+impl FungibleTokenMetadataProvider for Contract {
+    fn ft_metadata(&self) -> FungibleTokenMetadata {
+        self.metadata.as_ref().unwrap().clone()
     }
 }

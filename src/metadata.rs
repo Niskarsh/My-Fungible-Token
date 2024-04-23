@@ -2,6 +2,7 @@ use near_sdk::near;
 use near_sdk::json_types::Base64VecU8;
 
 #[near(serializers = [borsh, json])]
+#[derive(Clone)]
 pub struct FungibleTokenMetadata {
     pub spec: String,
     pub name: String,
@@ -14,3 +15,8 @@ pub struct FungibleTokenMetadata {
 
 /// The specific version of the standard we're using
 pub const FT_METADATA_SPEC: &str = "ft-1.0.0";
+
+pub trait FungibleTokenMetadataProvider {
+    // view call for returning metadata
+    fn ft_metadata(&self) -> FungibleTokenMetadata;
+}
