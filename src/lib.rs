@@ -13,7 +13,7 @@ use near_primitives::types::Balance;
 // pub crate::Contract;
 #[near(contract_state)]
 #[derive(Debug, PanicOnDefault)]
-pub(crate) struct Contract {
+pub struct Contract {
     accounts: LookupMap<AccountId, Balance>,
     total_supply: Balance,
     metadata: Option<FungibleTokenMetadata>,

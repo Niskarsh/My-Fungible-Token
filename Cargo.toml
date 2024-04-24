@@ -11,7 +11,7 @@ near-primitives = "0.21.2"
 
 [dev-dependencies]
 near-workspaces = { version = "0.10.0", features = ["unstable"] }
-tokio = "1.37.0"
+tokio = { version = "1.37.0", features = ["macros"] }
 
 [lib]
 crate-type = ["cdylib"]
