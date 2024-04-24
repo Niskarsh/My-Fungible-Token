@@ -5,8 +5,9 @@ pub mod storage;
 pub mod internal;
 
 // pub mod my_ft {
-    
-pub use metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC, ICON_BASE_64_ENCODED};
+
+use crate::metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC, ICON_BASE_64_ENCODED};
+// use metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC, ICON_BASE_64_ENCODED};
 use near_sdk::{json_types::U128, near, store::LookupMap, AccountId, PanicOnDefault};
 use near_primitives::types::Balance;
 // pub crate::Contract;

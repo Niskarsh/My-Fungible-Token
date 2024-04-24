@@ -1,6 +1,6 @@
 use std::error::Error;
-use crate::Contract;
-// use crate::Contract;
+// use Contract;
+use crate::{ Contract, ContractExt };
 // use self::Contract;
 use near_primitives::types::Balance;
 use near_sdk::{json_types::U128, near, AccountId};

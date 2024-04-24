@@ -1,7 +1,7 @@
 use std::error::Error;
 use near_sdk::serde_json::json;
 
-#[path ="../src/lib.rs"]
+#[path ="../src/metadata.rs"]
 mod metadata;
 mod common;
 use metadata::{ FT_METADATA_SPEC, FungibleTokenMetadata };
