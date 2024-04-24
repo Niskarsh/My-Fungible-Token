@@ -5,7 +5,7 @@ use near_sdk::serde_json::json;
 mod metadata;
 mod common;
 use metadata::{ FT_METADATA_SPEC, FungibleTokenMetadata };
-
+// use testing::my_ft::metadata::FT_METADATA_SPEC;
 #[tokio::test]
 async fn test_default_metadata_for_ft_contract() -> Result<(), Box<dyn Error>> {
     let (accounts, contract) = common::prepare_dev_env().await?;
