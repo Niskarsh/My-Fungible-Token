@@ -18,7 +18,7 @@ impl Contract {
         &mut self,
         account_id: &AccountId,
         amount: Balance,
-    ) -> Result<(), Box<dyn Error>> {
+    ) -> Result<(), MyFtError> {
         let balance = self
             .accounts
             .get(account_id)
@@ -31,7 +31,7 @@ impl Contract {
                 self.accounts.insert(account_id.clone(), new_balance);
                 Ok(())
             },
-            _ => Err(Box::new(MyFtError::BalanceOverflow)),
+            _ => Err(MyFtError::BalanceOverflow),
         }
     }
 }
