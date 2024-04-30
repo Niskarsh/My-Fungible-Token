@@ -3,13 +3,16 @@ pub mod ft_core;
 pub mod metadata;
 pub mod storage;
 pub mod internal;
+pub mod error;
 
 // pub mod my_ft {
+
+use std::fmt::Display;
 
 use crate::metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC, ICON_BASE_64_ENCODED};
 // use metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC, ICON_BASE_64_ENCODED};
 use near_sdk::{json_types::U128, near, store::LookupMap, AccountId, PanicOnDefault};
-use near_primitives::types::Balance;
+use near_primitives_core::types::Balance;
 // pub crate::Contract;
 #[near(contract_state)]
 #[derive(Debug, PanicOnDefault)]
@@ -19,9 +22,16 @@ pub struct Contract {
     metadata: Option<FungibleTokenMetadata>,
 }
 
+impl Display for Contract {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "({})", self.total_supply)
+    }
+}
+
 #[near]
 impl Contract {
     #[init]
+    #[private]
     pub fn new(owner_id: AccountId, total_supply: U128, metadata: FungibleTokenMetadata) -> Self {
         Self {
             accounts: LookupMap::new(b"a"),
@@ -31,6 +41,7 @@ impl Contract {
     }
 
     #[init]
+    #[private]
     pub fn new_default_meta(owner_id: AccountId, total_supply: U128) -> Self {
         Self::new(
             owner_id,

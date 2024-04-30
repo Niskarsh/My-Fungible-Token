@@ -7,14 +7,17 @@ edition = "2021"
 
 [dependencies]
 near-sdk = "5.1.0"
-near-primitives = "0.21.2"
+near-primitives-core = "0.21.2"
+getrandom = { version = "0.2", features = ["js"] }
+anyhow = "1.0.82"
 
 [dev-dependencies]
 near-workspaces = { version = "0.10.0", features = ["unstable"] }
-tokio = { version = "1.37.0", features = ["macros"] }
+near-gas = "0.2.5"
+tokio = { version = "1.37.0", default-features = false }
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [profile.release]
 codegen-units = 1

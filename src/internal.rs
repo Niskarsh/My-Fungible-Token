@@ -1,10 +1,14 @@
-use std::error::Error;
-// use Contract;
-use crate::*;
-// use self::Contract;
-use near_primitives::types::Balance;
-use near_sdk::{json_types::U128, near, AccountId};
+// use std::fmt::Error;
 
+use std::error::Error;
+
+// use std::fmt::Error;
+// use Contract;
+use crate::{ Contract, ContractExt };
+use crate::error::MyFtError;
+// use self::Contract;
+use near_primitives_core::types::Balance;
+use near_sdk::{json_types::U128, near, AccountId};
 
 #[near]
 impl Contract {
@@ -27,7 +31,7 @@ impl Contract {
                 self.accounts.insert(account_id.clone(), new_balance);
                 Ok(())
             },
-            None => Err("Balance Overflow".to_string().into()),
+            _ => Err(Box::new(MyFtError::BalanceOverflow)),
         }
     }
 }
